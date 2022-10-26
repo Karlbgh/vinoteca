@@ -44,7 +44,8 @@ public class VinoController {
 
     @GetMapping("/nuevo")
     public String nuevoVinoForm(Model model) {
-        model.addAttribute("vinoFormulario", new Vino());
+        Long nID = servicio.findAll().stream().max((x, y) -> x.getId().compareTo(y.getId())).get().getId()+1;
+        model.addAttribute("vinoFormulario", new Vino(nID));
         return "formulario";
     }
 
