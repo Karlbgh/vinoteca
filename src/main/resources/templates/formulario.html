@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html  lang="es"
+       xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/fragments/head_fragment::encabezado(~{::title})">
+  <title>Vinoteca</title>
+</head>
+
+<body>
+  <header th:replace="/fragments/navbar_fragment::barra-nav"></header>
+  <main class="container py-5">
+    <div class="row g-5">
+      <div class="col-md-7 col-lg-8">
+
+        <form method="post" action="#" enctype="multipart/form-data"
+              th:object="${vinoFormulario}"
+              th:action="${vinoFormulario.id != 0} ? @{/vino/editar/submit} : @{/vino/nuevo/submit}">
+
+          <h4 class="mb-3" th:text="${vinoFormulario.id != 0} ? 'Editar vino' : 'Nuevo vino'">Nuevo vino</h4>
+
+          <div class="mb-3">
+            <label for="id" class="form-label">ID</label>
+            <input type="text" class="form-control" id="id"
+                   th:field="*{id}"
+                   th:attrappend="readonly=${vinoFormulario.id != 0} ? 'readonly' : null">
+            <span class="help-block" id="id-error"
+                  th:if="${#fields.hasErrors('id')}"
+                  th:errors="*{id}">Errores</span>
+          </div>
+
+          <div class="mb-3">
+            <label for="uva" class="form-label">Uva</label>
+            <input type="text" class="form-control" id="uva"
+                   th:field="*{uva}">
+          </div>
+
+          <div class="mb-3">
+            <label for="origen" class="form-label">Origen</label>
+            <input type="text" class="form-control" id="origen"
+                   th:field="*{origen}">
+          </div>
+          <div class="mb-3">
+            <label for="graduacion" class="form-label">Graduacion</label>
+            <input type="text" class="form-control" id="graduacion"
+                   th:field="*{graduacion}">
+          </div>
+
+          <div class="mb-3">
+            <label for="year" class="form-label">Año</label>
+            <input type="text" class="form-control" id="year"
+                   th:field="*{year}">
+          </div>
+
+          <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="descripcion"
+                   th:field="*{descripcion}">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+
+      </div>
+    </div>
+  </main>
+</body>
+</html>

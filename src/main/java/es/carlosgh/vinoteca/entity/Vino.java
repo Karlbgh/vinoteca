@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Data
 @Builder
 public class Vino {
-    @NotEmpty
+
     private Long id;
     @NotEmpty
     private String uva;
@@ -23,8 +23,8 @@ public class Vino {
     private String graduacion;
     @NotEmpty
     private String year;
-    @NotEmpty
+
     private String imagen;
-    @NotEmpty
+
     private String descripcion;
 }
