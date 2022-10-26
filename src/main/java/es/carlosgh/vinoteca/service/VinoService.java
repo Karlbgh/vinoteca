@@ -3,6 +3,7 @@ package es.carlosgh.vinoteca.service;
 import es.carlosgh.vinoteca.entity.Vino;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -42,6 +43,11 @@ public class VinoService {
         return null;
     }
 
+    public List<Vino> findAll(){
+        return repository;
+    }
+
+    @PostConstruct
     public void fillRepository(){
         repository.addAll(
                 Arrays.asList(
@@ -52,7 +58,8 @@ public class VinoService {
                                 .maduracion("yogurin")
                                 .graduacion("10")
                                 .acidez("3,8")
-                                .imagen("")
+                                .imagen("img1")
+                                .descripcion("descripcion vino 1")
                                 .build(),
                         Vino.builder()
                                 .id(2L)
@@ -61,7 +68,8 @@ public class VinoService {
                                 .maduracion("madurito")
                                 .graduacion("13")
                                 .acidez("3,10")
-                                .imagen("")
+                                .imagen("img2")
+                                .descripcion("descripcion vino 2")
                                 .build(),
                         Vino.builder()
                                 .id(3L)
@@ -70,7 +78,8 @@ public class VinoService {
                                 .maduracion("jovencito")
                                 .graduacion("9")
                                 .acidez("3,5")
-                                .imagen("")
+                                .imagen("img3")
+                                .descripcion("descripcion vino 3")
                                 .build()
                 )
         );

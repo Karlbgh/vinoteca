@@ -2,14 +2,24 @@
 <html  lang="es"
        xmlns:th="http://www.thymeleaf.org"
        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8">
-    <title>Los mejores vinos</title>
+<head th:replace="/fragments/head_fragment::encabezado(~{::title})">
+    <title>Vinoteca</title>
 </head>
+
 <body>
+    <header></header>
     <main>
-        <h1>Hola Hola</h1>
-<!--        <form action=""></form>-->
+
+            <div class="card-group">
+                <div class="card" th:each="vino : ${listaVino}">
+                    <img class="card-img-top" th:src="@{${'/img/' + vino.imagen + '.jpg'}}" src="..." alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${vino.origen}" ></h5>
+                        <p class="card-text" th:text="${vino.descripcion}"></p>
+                    </div>
+                </div>
+            </div>
+
     </main>
 </body>
 </html>

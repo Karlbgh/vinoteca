@@ -26,4 +26,6 @@ public class Vino {
     private String acidez;
     @NotEmpty
     private String imagen;
+    @NotEmpty
+    private String descripcion;
 }
