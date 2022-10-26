@@ -4,6 +4,7 @@ import es.carlosgh.vinoteca.entity.Vino;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -53,31 +54,28 @@ public class VinoService {
                 Arrays.asList(
                         Vino.builder()
                                 .id(1L)
-                                .variedadUva("pocha")
+                                .uva("pocha")
                                 .origen("casero")
-                                .maduracion("yogurin")
                                 .graduacion("10")
-                                .acidez("3,8")
+                                .year("22/10/2019")
                                 .imagen("img1")
                                 .descripcion("descripcion vino 1")
                                 .build(),
                         Vino.builder()
                                 .id(2L)
-                                .variedadUva("bonita")
+                                .uva("bonita")
                                 .origen("de carton")
-                                .maduracion("madurito")
                                 .graduacion("13")
-                                .acidez("3,10")
+                                .year("22/01/2010")
                                 .imagen("img2")
                                 .descripcion("descripcion vino 2")
                                 .build(),
                         Vino.builder()
                                 .id(3L)
-                                .variedadUva("la morada")
+                                .uva("la morada")
                                 .origen("del campo")
-                                .maduracion("jovencito")
                                 .graduacion("9")
-                                .acidez("3,5")
+                                .year("02/05/2000")
                                 .imagen("img3")
                                 .descripcion("descripcion vino 3")
                                 .build()

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html  lang="es"
+       xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/fragments/head_fragment::encabezado(~{::title})">
+    <title>listado de vino</title>
+</head>
+<body>
+    <main>
+
+        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+            <div class="col-md-7 p-lg-7 mx-auto my-7">
+                <h1 class="display-6 fw-normal">Listado de empleados de la empresa</h1>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Uva</th>
+                        <th>Origen</th>
+                        <th>Graduación</th>
+                        <th>Año</th>
+                        <th>Descripción</th>
+                        <th>Imagen</th>
+                    </thead>
+
+                    <tbody>
+
+                    <tr th:each="vino : ${listaVinos}">
+                        <td th:text="${vino.id}">ID</td>
+                        <td><img src="" th:src="${vino.imagen}" width="64px"/></td>
+                        <td th:text="${vino.uva}">uvita</td>
+                        <td th:text="${vino.origen}">de casa</td>
+                        <td th:text="${vino.graduacion}">954000000</td>
+                        <td th:text="${vino.year}">954000000</td>
+                        <td th:text="${vino.descripcion}">vino tintillo rico rico</td>
+
+<!--                        <td>-->
+<!--                            <span th:if="${empleado.directivo}" class="fa fa-user-check" aria-hidden="true"></span>-->
+<!--                            <span th:unless="${empleado.directivo}" class="fa fa-user" aria-hidden="true"></span>-->
+<!--                        </td>-->
+
+                        <td>
+                            <a th:href="@{/vino/edit/{id}(id=${vino.id})}" aria-label="Editar">
+                                <span class="fas fa-edit" aria-hidden="true"></span>
+                            </a>
+                        </td>
+
+                        <td>
+                            <a href="#" th:onclick="|javascript:open_delete(${vino.id})|" aria-label="Borrar">
+                                <span class="fas fa-trash" aria-hidden="true"></span>
+                            </a>
+                        </td>
+
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>

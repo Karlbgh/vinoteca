@@ -2,22 +2,24 @@ package es.carlosgh.vinoteca.controller;
 
 import es.carlosgh.vinoteca.service.VinoService;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
 @Data
-@RequestMapping("/")
-public class MainController {
+@Controller
+@RequestMapping("/vino")
+public class VinoController {
 
     private final VinoService servicio;
 
-    @GetMapping({"", "index"})
-    public String welcome(Model model){
-        model.addAttribute("listaVino", servicio.findAll() );
-        return "index";
+    @GetMapping("/list")
+    public String listaDeVinos(Model model){
+        model.addAttribute("listaVinos", servicio.findAll());
+        return "list";
     }
+
+
+
 }

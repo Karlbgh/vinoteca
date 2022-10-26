@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,15 +16,13 @@ public class Vino {
     @NotEmpty
     private Long id;
     @NotEmpty
-    private String variedadUva;
+    private String uva;
     @NotEmpty
     private String origen;
     @NotEmpty
-    private String maduracion;
-    @NotEmpty
     private String graduacion;
     @NotEmpty
-    private String acidez;
+    private String year;
     @NotEmpty
     private String imagen;
     @NotEmpty
