@@ -57,6 +57,12 @@
                    th:field="*{descripcion}">
           </div>
 
+          <div class="mb-3">
+            <img th:src="*{imagen}" src="" alt="">
+            <label for="imagen" class="form-label">Imagen</label>
+            <input type="file" id="imagen" name="file" class="form-control">
+          </div>
+
           <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
 

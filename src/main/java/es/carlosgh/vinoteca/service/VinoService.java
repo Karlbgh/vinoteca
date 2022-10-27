@@ -58,7 +58,7 @@ public class VinoService {
                                 .origen("casero")
                                 .graduacion("10")
                                 .year("22/10/2019")
-                                .imagen("img1")
+                                .imagen("/img/img1.jpg")
                                 .descripcion("descripcion vino 1")
                                 .build(),
                         Vino.builder()
@@ -67,7 +67,7 @@ public class VinoService {
                                 .origen("de carton")
                                 .graduacion("13")
                                 .year("22/01/2010")
-                                .imagen("img2")
+                                .imagen("/img/img2.jpg")
                                 .descripcion("descripcion vino 2")
                                 .build(),
                         Vino.builder()
@@ -76,7 +76,7 @@ public class VinoService {
                                 .origen("del campo")
                                 .graduacion("9")
                                 .year("02/05/2000")
-                                .imagen("img3")
+                                .imagen("/img/img3.jpg")
                                 .descripcion("descripcion vino 3")
                                 .build()
                 )
