@@ -18,19 +18,21 @@
           <li class="nav-item">
             <a class="nav-link" th:href="@{/}">
               <i class="fa fa-home"></i>
-              <span th:text="Inicio">Inicio</span>
+              <span th:text="#{navbar.inicio}">Inicio</span>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/vino/lista}" th:text="Vinos">Vinos</a>
+            <a class="nav-link" th:href="@{/vino/lista}" th:text="#{navbar.vinos}">Vinos</a>
           </li>
 
         </ul>
 
         <div class="d-flex">
-          <h5 class="text-white">idioma</h5>
-
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" th:href="@{''(lang=es_ES)}">Español</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{''(lang=en_US)}">English</a></li>
+          </ul>
         </div>
 
       </div>
