@@ -17,16 +17,13 @@
               th:action="@{/vino/editar/submit}">
 <!--              th:action="${vinoFormulario.id != 0} ? @{/vino/editar/submit} : @{/vino/nuevo/submit}">-->
 
-          <h4 class="mb-3" th:text="${vinoFormulario.origen != ''} ? 'Editar vino' : 'Nuevo vino'">Nuevo vino</h4>
+          <h4 class="mb-3" th:text="${fromEdit == true} ? 'Editar vino' : 'Nuevo vino'">Nuevo vino</h4>
 
           <div class="mb-3">
             <label for="id" class="form-label">ID</label>
             <input type="text" class="form-control" id="id"
-                   th:field="*{id}"
-                   th:attrappend="readonly=${vinoFormulario.id != 0} ? 'readonly' : null">
-            <span class="help-block" id="id-error"
-                  th:if="${#fields.hasErrors('id')}"
-                  th:errors="*{id}">Errores</span>
+                   th:field="*{id}">
+<!--                   th:attrappend="readonly=${vinoFormulario.id != 0} ? 'readonly' : null">-->
           </div>
 
           <div class="mb-3">
@@ -37,29 +34,45 @@
                       th:value="${tipoVino}"
                       th:text="${tipoVino}"></option>
             </select>
+              <span class="help-block" id="tipo-error"
+                    th:if="${#fields.hasErrors('tipo')}"
+                    th:errors="*{tipo}">Errores</span>
           </div>
 
           <div class="mb-3">
             <label for="origen" class="form-label" th:text="#{form.origen}">Origen</label>
             <input type="text" class="form-control" id="origen"
                    th:field="*{origen}">
+              <span class="help-block" id="origen-error"
+                    th:if="${#fields.hasErrors('origen')}"
+                    th:errors="*{origen}">Errores</span>
           </div>
+
           <div class="mb-3">
             <label for="graduacion" class="form-label" th:text="#{form.graduacion}">Graduacion</label>
             <input type="text" class="form-control" id="graduacion"
                    th:field="*{graduacion}">
+              <span class="help-block" id="graduacion-error"
+                    th:if="${#fields.hasErrors('graduacion')}"
+                    th:errors="*{graduacion}">Errores</span>
           </div>
 
           <div class="mb-3">
             <label for="year" class="form-label" th:text="#{form.year}">Año</label>
             <input type="text" class="form-control" id="year"
                    th:field="*{year}">
+              <span class="help-block" id="year-error"
+                    th:if="${#fields.hasErrors('year')}"
+                    th:errors="*{year}">Errores</span>
           </div>
 
           <div class="mb-3">
             <label for="descripcion" class="form-label" th:text="#{form.desc}">Descripción</label>
             <input type="text" class="form-control" id="descripcion"
                    th:field="*{descripcion}">
+              <span class="help-block" id="descripcion-error"
+                    th:if="${#fields.hasErrors('descripcion')}"
+                    th:errors="*{descripcion}">Errores</span>
           </div>
 
           <div class="mb-3">
@@ -67,6 +80,9 @@
                 <img th:src="*{imagen}" src="" alt="">
                 <input type="hidden" th:field="*{imagen}">
                 <input type="file" id="file" name="file" class="form-control">
+                <span class="help-block" id="imagen-error"
+                    th:if="${#fields.hasErrors('imagen')}"
+                    th:errors="*{imagen}">Errores</span>
           </div>
 
           <button type="submit" class="btn btn-primary" th:text="#{form.enviar}">Enviar</button>

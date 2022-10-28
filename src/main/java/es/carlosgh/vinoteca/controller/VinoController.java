@@ -32,11 +32,11 @@ public class VinoController {
         Vino vino = servicio.findById(id);
         if ( vino != null){
             model.addAttribute("vinoFormulario", vino);
+            model.addAttribute("fromEdit", true);
             return "formulario";
         }
         return "redirect:/vino/lista";
     }
-
     @PostMapping("/editar/submit")
     public String editarVinoSubmit(@Valid @ModelAttribute("vinoFormulario") Vino vino, BindingResult bindingResult, @RequestParam("file") MultipartFile file){
         if (bindingResult.hasErrors()){
@@ -50,14 +50,13 @@ public class VinoController {
         servicio.edit(vino);
         return "redirect:/vino/lista";
     }
-
     @GetMapping("/nuevo")
     public String nuevoVinoForm(Model model) {
         Long nID = servicio.findAll().stream().max((x, y) -> x.getId().compareTo(y.getId())).get().getId()+1;
         model.addAttribute("vinoFormulario", new Vino(nID));
+        model.addAttribute("fromEdit", false);
         return "formulario";
     }
-
     @GetMapping("/borrar/{id}")
     public String borrarVino(@PathVariable("id") Long id, Model model){
         Vino vino = servicio.findById(id);
