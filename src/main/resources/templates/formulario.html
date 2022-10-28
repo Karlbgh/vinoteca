@@ -14,7 +14,8 @@
 
         <form method="post" action="#" enctype="multipart/form-data"
               th:object="${vinoFormulario}"
-              th:action="${vinoFormulario.id != 0} ? @{/vino/editar/submit} : @{/vino/nuevo/submit}">
+              th:action="@{/vino/editar/submit}">
+<!--              th:action="${vinoFormulario.id != 0} ? @{/vino/editar/submit} : @{/vino/nuevo/submit}">-->
 
           <h4 class="mb-3" th:text="${vinoFormulario.origen != ''} ? 'Editar vino' : 'Nuevo vino'">Nuevo vino</h4>
 
@@ -62,9 +63,10 @@
           </div>
 
           <div class="mb-3">
-            <label for="imagen" class="form-label" th:text="#{form.imagen}">Imagen</label>
-            <img th:src="*{imagen}" src="" alt="">
-            <input type="file" id="imagen" name="file" class="form-control">
+            <label for="file" class="form-label" th:text="#{form.imagen}">Imagen</label>
+                <img th:src="*{imagen}" src="" alt="">
+                <input type="hidden" th:field="*{imagen}">
+                <input type="file" id="file" name="file" class="form-control">
           </div>
 
           <button type="submit" class="btn btn-primary" th:text="#{form.enviar}">Enviar</button>
