@@ -16,13 +16,13 @@ import java.time.LocalDate;
 public class Vino {
 
     private Long id;
-    @NotEmpty
-    private String uva;
-    @NotEmpty
+
+    private TipoVino tipo;
+
     private String origen;
-    @NotEmpty
+
     private String graduacion;
-    @NotEmpty
+
     private String year;
 
     private String imagen;

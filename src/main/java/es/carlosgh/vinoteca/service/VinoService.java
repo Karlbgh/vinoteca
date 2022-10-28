@@ -1,5 +1,6 @@
 package es.carlosgh.vinoteca.service;
 
+import es.carlosgh.vinoteca.entity.TipoVino;
 import es.carlosgh.vinoteca.entity.Vino;
 import org.springframework.stereotype.Service;
 
@@ -54,7 +55,7 @@ public class VinoService {
                 Arrays.asList(
                         Vino.builder()
                                 .id(1L)
-                                .uva("pocha")
+                                .tipo(TipoVino.Blanco)
                                 .origen("casero")
                                 .graduacion("10")
                                 .year("22/10/2019")
@@ -63,7 +64,7 @@ public class VinoService {
                                 .build(),
                         Vino.builder()
                                 .id(2L)
-                                .uva("bonita")
+                                .tipo(TipoVino.Tinto)
                                 .origen("de carton")
                                 .graduacion("13")
                                 .year("22/01/2010")
@@ -72,7 +73,7 @@ public class VinoService {
                                 .build(),
                         Vino.builder()
                                 .id(3L)
-                                .uva("la morada")
+                                .tipo(TipoVino.Rosado)
                                 .origen("del campo")
                                 .graduacion("9")
                                 .year("02/05/2000")
