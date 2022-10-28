@@ -16,7 +16,6 @@ import java.time.LocalDate;
 @Data
 @Builder
 public class Vino {
-
     private Long id;
     @NotNull(message="{vino.tipo.vacio}")
     private TipoVino tipo;
