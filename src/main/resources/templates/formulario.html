@@ -16,7 +16,7 @@
               th:object="${vinoFormulario}"
               th:action="${vinoFormulario.id != 0} ? @{/vino/editar/submit} : @{/vino/nuevo/submit}">
 
-          <h4 class="mb-3" th:text="${vinoFormulario.id != 0} ? 'Editar vino' : 'Nuevo vino'">Nuevo vino</h4>
+          <h4 class="mb-3" th:text="${vinoFormulario.origen != ''} ? 'Editar vino' : 'Nuevo vino'">Nuevo vino</h4>
 
           <div class="mb-3">
             <label for="id" class="form-label">ID</label>
@@ -31,7 +31,8 @@
           <div class="mb-3">
             <label for="tipo" class="form-label" th:text="#{form.tipo}">tipo</label>
             <select class="form-control" id="tipo" name="tipo" th:field="*{tipo}">
-              <option th:each="tipoVino : ${vinoFormulario.tipo.values()}"
+              <option value=""></option>
+              <option th:each="tipoVino : ${T(es.carlosgh.vinoteca.entity.TipoVino).values()}"
                       th:value="${tipoVino}"
                       th:text="${tipoVino}"></option>
             </select>
