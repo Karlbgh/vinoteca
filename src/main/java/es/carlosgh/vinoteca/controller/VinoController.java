@@ -14,6 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.util.Comparator;
+import java.util.List;
 
 @Data
 @Controller
@@ -24,7 +26,8 @@ public class VinoController {
     private final StorageService storageService;
     @GetMapping("/lista")
     public String listaDeVinos(Model model){
-        model.addAttribute("listaVinos", servicio.findAll());
+        List<Vino> listaOrdenada = servicio.findAll().stream().sorted(Comparator.comparing(Vino::getId)).toList();
+        model.addAttribute("listaVinos", listaOrdenada);
         return "lista";
     }
     @GetMapping("/editar/{id}")
@@ -52,7 +55,7 @@ public class VinoController {
     }
     @GetMapping("/nuevo")
     public String nuevoVinoForm(Model model) {
-        Long nID = servicio.findAll().stream().max((x, y) -> x.getId().compareTo(y.getId())).get().getId()+1;
+        Long nID = servicio.findAll().stream().max(Comparator.comparing(Vino::getId)).get().getId()+1;
         model.addAttribute("vinoFormulario", new Vino(nID));
         model.addAttribute("fromEdit", false);
         return "formulario";
