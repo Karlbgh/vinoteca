@@ -33,36 +33,34 @@
                     </thead>
 
                     <tbody>
-
-                    <tr th:each="vino : ${listaVinos}">
-                        <td th:text="${vino.id}">ID</td>
-                        <td><img src="" th:src="${vino.imagen}" width="64px"/></td>
-                        <td th:text="${vino.tipo}">uvita</td>
-                        <td th:text="${vino.precio}">25</td>
-                        <td th:text="${vino.graduacion}">954000000</td>
-                        <td th:text="${vino.year}">954000000</td>
-                        <td th:text="${vino.descripcion}">vino tintillo rico rico</td>
-
-                        <td>
-                            <a th:href="@{/vino/editar/{id}(id=${vino.id})}" aria-label="Editar">
-                                <span class="fas fa-edit" aria-hidden="true"></span>
-                            </a>
-                        </td>
-
-                        <td>
-<!--                            <a href="#" th:onclick="|javascript:open_delete(${vino.id})|" aria-label="Borrar">-->
-                            <a th:href="@{/vino/borrar/{id}(id=${vino.id})}" aria-label="Borrar">
-                                <span class="fas fa-trash" aria-hidden="true"></span>
-                            </a>
-                        </td>
-
-
-                    </tr>
+                        <tr th:each="vino : ${listaVinos}">
+                            <td th:text="${vino.id}">ID</td>
+                            <td><img src="" th:src="${vino.imagen}" width="64px"/></td>
+                            <td th:text="${vino.tipo}">uvita</td>
+                            <td th:text="${vino.precio}">25</td>
+                            <td th:text="${vino.graduacion}">954000000</td>
+                            <td th:text="${vino.year}">954000000</td>
+                            <td th:text="${vino.descripcion}">vino tintillo rico rico</td>
+                            <td>
+                                <a th:href="@{/vino/editar/{id}(id=${vino.id})}" aria-label="Editar">
+                                    <span class="fas fa-edit" aria-hidden="true"></span>
+                                </a>
+                            </td>
+                            <td>
+    <!--                            <a href="#" th:onclick="|javascript:open_delete(${vino.id})|" aria-label="Borrar">-->
+                                <a th:href="@{/vino/borrar/{id}(id=${vino.id})}" aria-label="Borrar">
+                                    <span class="fas fa-trash" aria-hidden="true"></span>
+                                </a>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
     </main>
+
+    <footer th:replace="/fragments/footer_fragment::pie"></footer>
+    <div th:replace="/fragments/js_fragment::jsfinal(~{})"></div>
 </body>
 </html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html  lang="es"
+       xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <th:block th:fragment="jsfinal(scripts)">
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <!-- Scripts adicionales -->
+    <th:block th:replace="${scripts}" />
+  </th:block>
+</body>
+</html>
