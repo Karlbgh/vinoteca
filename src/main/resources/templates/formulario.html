@@ -58,7 +58,7 @@
 
               <div class="mb-3">
                 <label for="year" class="text-white form-label" th:text="#{form.year}">Año</label>
-                <input type="text" class="form-control" id="year"
+                <input type="text" class="form-control" id="year" placeholder="2019"
                        th:field="*{year}">
                   <span class="help-block" id="year-error"
                         th:if="${#fields.hasErrors('year')}"
