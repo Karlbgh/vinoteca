@@ -8,89 +8,90 @@
 
 <body>
   <header th:replace="/fragments/navbar_fragment::barra-nav"></header>
-  <main class="container py-5">
-    <div class="row g-5">
-      <div class="col-md-7 col-lg-8">
+    <main class="mainForm">
+        <div class="contenidoForm">
+            <div class="formulario">
 
-        <form method="post" action="#" enctype="multipart/form-data"
-              th:object="${vinoFormulario}"
-              th:action="@{/vino/editar/submit}">
-<!--              th:action="${vinoFormulario.id != 0} ? @{/vino/editar/submit} : @{/vino/nuevo/submit}">-->
+            <form method="post" action="#" enctype="multipart/form-data"
+                  th:object="${vinoFormulario}"
+                  th:action="@{/vino/editar/submit}">
 
-          <h4 class="mb-3" th:text="${fromEdit == true} ? 'Editar vino' : 'Nuevo vino'">Nuevo vino</h4>
+              <h4 class="text-white mb-3" th:text="${fromEdit == true} ? #{form.editar} : #{form.nuevo}">Nuevo vino</h4>
 
-          <div class="mb-3">
-            <label for="id" class="form-label">ID</label>
-            <input type="text" class="form-control" id="id"
-                   th:field="*{id}"
-                   th:attrappend="readonly=${vinoFormulario.id}">
-          </div>
+              <div class="mb-3">
+                <label for="id" class="text-white form-label">ID</label>
+                <input type="text" class="form-control" id="id"
+                       th:field="*{id}"
+                       th:attrappend="readonly=${vinoFormulario.id}">
+              </div>
 
-          <div class="mb-3">
-            <label for="tipo" class="form-label" th:text="#{form.tipo}">tipo</label>
-            <select class="form-control" id="tipo" name="tipo" th:field="*{tipo}">
-              <option value=""></option>
-              <option th:each="tipoVino : ${T(es.carlosgh.vinoteca.entity.TipoVino).values()}"
-                      th:value="${tipoVino}"
-                      th:text="${tipoVino}"></option>
-            </select>
-              <span class="help-block" id="tipo-error"
+              <div class="mb-3">
+                <label for="tipo" class="text-white form-label" th:text="#{form.tipo}">tipo</label>
+                <select class="form-control" id="tipo" name="tipo" th:field="*{tipo}">
+                  <option value=""></option>
+                  <option th:each="tipoVino : ${T(es.carlosgh.vinoteca.entity.TipoVino).values()}"
+                          th:value="${tipoVino}"
+                          th:text="${tipoVino}"></option>
+                </select>
+                <span class="help-block" id="tipo-error"
                     th:if="${#fields.hasErrors('tipo')}"
                     th:errors="*{tipo}">Errores</span>
+              </div>
+
+              <div class="mb-3">
+                <label for="precio" class="text-white form-label" th:text="#{form.precio}">Origen</label>
+                <input type="text" class="form-control" id="precio"
+                       th:field="*{precio}">
+                  <span class="help-block" id="origen-error"
+                        th:if="${#fields.hasErrors('precio')}"
+                        th:errors="*{precio}">Errores</span>
+              </div>
+
+              <div class="mb-3">
+                <label for="graduacion" class="text-white form-label" th:text="#{form.graduacion}">Graduacion</label>
+                <input type="text" class="form-control" id="graduacion"
+                       th:field="*{graduacion}">
+                  <span class="help-block" id="graduacion-error"
+                        th:if="${#fields.hasErrors('graduacion')}"
+                        th:errors="*{graduacion}">Errores</span>
+              </div>
+
+              <div class="mb-3">
+                <label for="year" class="text-white form-label" th:text="#{form.year}">Año</label>
+                <input type="text" class="form-control" id="year"
+                       th:field="*{year}">
+                  <span class="help-block" id="year-error"
+                        th:if="${#fields.hasErrors('year')}"
+                        th:errors="*{year}">Errores</span>
+              </div>
+
+              <div class="mb-3">
+                <label for="descripcion" class="text-white form-label" th:text="#{form.desc}">Descripción</label>
+                <input type="text" class="form-control" id="descripcion"
+                       th:field="*{descripcion}">
+                  <span class="help-block" id="descripcion-error"
+                        th:if="${#fields.hasErrors('descripcion')}"
+                        th:errors="*{descripcion}">Errores</span>
+              </div>
+
+              <div class="mb-3">
+                <label for="file" class="text-white form-label" th:text="#{form.imagen}">Imagen</label>
+                    <input type="hidden" th:field="*{imagen}">
+                    <input type="file" id="file" name="file" class="form-control">
+                    <span class="help-block" id="imagen-error"
+                        th:if="${#fields.hasErrors('imagen')}"
+                        th:errors="*{imagen}">Errores</span>
+              </div>
+
+              <button type="submit" class="btn btn-dark" th:text="#{form.enviar}">Enviar</button>
+            </form>
+
           </div>
-
-          <div class="mb-3">
-            <label for="precio" class="form-label" th:text="#{form.precio}">Origen</label>
-            <input type="text" class="form-control" id="precio"
-                   th:field="*{precio}">
-              <span class="help-block" id="origen-error"
-                    th:if="${#fields.hasErrors('precio')}"
-                    th:errors="*{precio}">Errores</span>
-          </div>
-
-          <div class="mb-3">
-            <label for="graduacion" class="form-label" th:text="#{form.graduacion}">Graduacion</label>
-            <input type="text" class="form-control" id="graduacion"
-                   th:field="*{graduacion}">
-              <span class="help-block" id="graduacion-error"
-                    th:if="${#fields.hasErrors('graduacion')}"
-                    th:errors="*{graduacion}">Errores</span>
-          </div>
-
-          <div class="mb-3">
-            <label for="year" class="form-label" th:text="#{form.year}">Año</label>
-            <input type="text" class="form-control" id="year"
-                   th:field="*{year}">
-              <span class="help-block" id="year-error"
-                    th:if="${#fields.hasErrors('year')}"
-                    th:errors="*{year}">Errores</span>
-          </div>
-
-          <div class="mb-3">
-            <label for="descripcion" class="form-label" th:text="#{form.desc}">Descripción</label>
-            <input type="text" class="form-control" id="descripcion"
-                   th:field="*{descripcion}">
-              <span class="help-block" id="descripcion-error"
-                    th:if="${#fields.hasErrors('descripcion')}"
-                    th:errors="*{descripcion}">Errores</span>
-          </div>
-
-          <div class="mb-3">
-            <label for="file" class="form-label" th:text="#{form.imagen}">Imagen</label>
-                <img th:src="*{imagen}" src="" alt="">
-                <input type="hidden" th:field="*{imagen}">
-                <input type="file" id="file" name="file" class="form-control">
-                <span class="help-block" id="imagen-error"
-                    th:if="${#fields.hasErrors('imagen')}"
-                    th:errors="*{imagen}">Errores</span>
-          </div>
-
-          <button type="submit" class="btn btn-primary" th:text="#{form.enviar}">Enviar</button>
-        </form>
-
-      </div>
-    </div>
-  </main>
+            <div class="imagenFormulario">
+                <img th:src="*{vinoFormulario.imagen}" src="" alt="">
+            </div>
+        </div>
+    </main>
 
   <footer th:replace="/fragments/footer_fragment::pie"></footer>
   <div th:replace="/fragments/js_fragment::jsfinal(~{})"></div>

@@ -8,18 +8,18 @@
 
 <body>
     <header th:replace="/fragments/navbar_fragment::barra-nav"></header>
-    <main>
 
-        <div class="card-group">
+    <main id="mainIndex">
+        <section id="seccionVino">
             <div class="card" th:each="vino : ${listaVino}">
-                <img class="card-img-top" th:src="@{${vino.imagen}}" src="..." alt="...">
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${vino.precio}" ></h5>
-                    <p class="card-text" th:text="${vino.descripcion}"></p>
+                <img src="" alt="imgVino" th:src="@{${vino.imagen}}">
+                <div class="cardDesc">
+                    <h4 th:text="${vino.tipo + ' - ' + vino.year + ' ' + vino.graduacion + 'º'}"><b>John Doe</b></h4>
+                    <p th:text="${vino.descripcion}">descVino</p>
+                    <p th:text="${vino.precio + ' €'}">precioVino</p>
                 </div>
             </div>
-        </div>
-
+        </section>
     </main>
 
     <footer th:replace="/fragments/footer_fragment::pie"></footer>
