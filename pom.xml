@@ -17,6 +17,7 @@
     <properties>
         <java.version>17</java.version>
         <webjars.bootstrap.version>5.2.0</webjars.bootstrap.version>
+        <webjars.jquery.version>3.6.1</webjars.jquery.version>
         <webjars.popper.version>2.9.3</webjars.popper.version>
         <webjars.fontawesome.version>5.15.4</webjars.fontawesome.version>
         <webjars.locator.version>0.45</webjars.locator.version>
@@ -74,6 +75,12 @@
             <groupId>org.webjars</groupId>
             <artifactId>popper.js</artifactId>
             <version>${webjars.popper.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>${webjars.jquery.version}</version>
         </dependency>
 
         <dependency>

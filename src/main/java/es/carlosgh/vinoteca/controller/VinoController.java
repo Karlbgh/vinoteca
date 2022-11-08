@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 import javax.validation.Valid;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Controller
@@ -73,5 +74,20 @@ public class VinoController {
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
         Resource file = storageService.loadAsResource(filename);
         return ResponseEntity.ok().body(file);
+    }
+    @GetMapping("/lista/filtro")
+    public String filtrarPorPrecio(@RequestParam("filtro") String filtro, Model model ){
+        Double precio;
+        List<Vino> vinosFiltrados;
+        try {
+            precio = Double.parseDouble(filtro);
+            vinosFiltrados = servicio.findAll().stream().filter(x -> x.getPrecio().equals(precio)).collect(Collectors.toList());
+            model.addAttribute("listaVinos", vinosFiltrados);
+        }catch (NumberFormatException  e){
+            vinosFiltrados = servicio.findAll();
+            model.addAttribute("listaVinos", vinosFiltrados );
+        }
+
+        return "fragments/tablaVinos_fragment::tablaVinos";
     }
 }

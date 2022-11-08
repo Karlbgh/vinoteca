@@ -8,3 +8,16 @@ function open_delete(id) {
         }
     });
 }
+
+function filtrarVino(){
+    let precioVino = $('#textoFiltroVino').val();
+    $.ajax({
+        url: '/vino/lista/filtro/',
+        data: {
+            filtro:precioVino
+        },
+        success: function (data) {
+            $('#tablaVinos').html(data);
+        }
+    });
+}

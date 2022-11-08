@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html  lang="es"
+       xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/fragments/head_fragment::encabezado(~{::title})">
+  <title>listado de vino</title>
+</head>
+<body>
+
+    <table id="tablaVinos" class="table table-dark table-stripe" th:fragment="tablaVinos">
+      <thead>
+      <tr>
+        <th th:text="#{lista.cabeceraID}">ID</th>
+        <th th:text="#{lista.cabeceraImagen}">Imagen</th>
+        <th th:text="#{lista.cabeceraTipo}">Tipo</th>
+        <th th:text="#{lista.cabeceraPrecio}">Precio</th>
+        <th th:text="#{lista.cabeceraGraduacion}">Graduación</th>
+        <th th:text="#{lista.cabeceraYear}">Año</th>
+        <th th:text="#{lista.cabeceraDesc}">Descripción</th>
+        <th colspan="2">
+          <a class="text-white" th:href="@{/vino/nuevo}">
+            <i class="text-white fas fa-plus-circle"></i>
+            <span class="text-white" th:text="#{lista.cabeceraNuevoVino}">Nuevo Vino</span>
+          </a>
+        </th>
+      </thead>
+
+      <tbody>
+      <tr th:each="vino : ${listaVinos}">
+        <td th:text="${vino.id}">ID</td>
+        <td>
+          <img src="" th:src="${vino.imagen}" width="64px"/>
+        </td>
+        <td th:text="${vino.tipo}">uvita</td>
+        <td th:text="${vino.precio}">25</td>
+        <td th:text="${vino.graduacion}">954000000</td>
+        <td th:text="${vino.year}">954000000</td>
+        <td th:text="${vino.descripcion}">vino tintillo rico rico</td>
+        <td>
+          <a th:href="@{/vino/editar/{id}(id=${vino.id})}" aria-label="Editar">
+            <span class="text-white fas fa-edit" aria-hidden="true"></span>
+          </a>
+        </td>
+        <td>
+          <a th:href="@{/vino/borrar/{id}(id=${vino.id})}" aria-label="Borrar">
+            <span class="text-white fas fa-trash" aria-hidden="true"></span>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+</body>
+</html>
