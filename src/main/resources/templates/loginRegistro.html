@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html  lang="es"
+       xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/fragments/head_fragment::encabezado(~{::title})">
+  <title>Login y Registro</title>
+</head>
+<body>
+
+  <header th:replace="/fragments/navbar_fragment::barra-nav"></header>
+
+  <main>
+    <div class="container login-container">
+      <div class="row">
+
+        <div class="col-md-6 login-form-1">
+          <h3>Iniciar Sesión</h3>
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Your Email *" value="" />
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" placeholder="Your Password *" value="" />
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btnSubmit" value="Aceptar" />
+            </div>
+            <div class="form-group">
+              <a href="#" class="ForgetPwd">Aceptar</a>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-6 login-form-2">
+          <h3>Registrate</h3>
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Your Email *" value="" />
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" placeholder="Your Password *" value="" />
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btnSubmit" value="Registrar" />
+            </div>
+            <div class="form-group">
+              <a href="#" class="ForgetPwd" value="Login">Registrar</a>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer th:replace="/fragments/footer_fragment::pie"></footer>
+  <th:block th:replace="/fragments/js_fragment::jsfinal"></th:block>
+</body>
+</html>
