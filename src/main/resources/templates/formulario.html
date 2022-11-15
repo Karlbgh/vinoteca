@@ -77,7 +77,7 @@
               <div class="mb-3">
                 <label for="file" class="text-white form-label" th:text="#{form.imagen}">Imagen</label>
                     <input type="hidden" th:field="*{imagen}">
-                    <input type="file" id="file" name="file" class="form-control">
+                    <input type="file" id="file" name="file" class="form-control" onchange="javascript:cambiarImagen()">
                     <span class="help-block" id="imagen-error"
                         th:if="${#fields.hasErrors('imagen')}"
                         th:errors="*{imagen}">Errores</span>
@@ -88,7 +88,7 @@
 
           </div>
             <div class="imagenFormulario">
-                <img th:src="*{vinoFormulario.imagen}" src="" alt="">
+                <img id="imgVino" th:src="*{vinoFormulario.imagen}" src="" alt="">
             </div>
         </div>
     </main>

@@ -21,3 +21,13 @@ function filtrarVino(){
         }
     });
 }
+
+function cambiarImagen(){
+    let input = document.getElementById("file");
+    let fReader = new FileReader();
+    fReader.readAsDataURL(input.files[0]);
+    fReader.onloadend = function(event){
+        let img = document.getElementById("imgVino");
+        img.src = event.target.result;
+    }
+}
