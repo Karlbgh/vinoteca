@@ -10,23 +10,23 @@
   <header th:replace="/fragments/navbar_fragment::barra-nav"></header>
 
   <main>
-    <div class="container login-container">
+    <div class="">
       <div class="row">
-
         <div class="col-md-6 login-form-1">
           <h3>Iniciar Sesión</h3>
           <form>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Email *" value="" />
+              <label for="" class="text-white form-label">Usuario</label>
+              <input type="text" class="form-control" placeholder="usuario" value="" />
             </div>
+
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Your Password *" value="" />
+              <label for="" class="text-white form-label">Contraseña</label>
+              <input type="password" class="form-control" placeholder="contraseña" value="" />
             </div>
+            <br>
             <div class="form-group">
               <input type="submit" class="btnSubmit" value="Aceptar" />
-            </div>
-            <div class="form-group">
-              <a href="#" class="ForgetPwd">Aceptar</a>
             </div>
           </form>
         </div>
@@ -35,17 +35,26 @@
           <h3>Registrate</h3>
           <form>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Email *" value="" />
+              <label for="" class="text-white form-label">Usuario</label>
+              <input type="text" class="form-control" placeholder="Juanito21" value="" />
             </div>
+
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Your Password *" value="" />
+              <label for="" class="text-white form-label">Contraseña</label>
+              <input type="password" class="form-control" placeholder="Contraseña" value="" />
+              <br>
+              <input type="password" class="form-control" placeholder="Repite contraseña" value="" />
             </div>
+
+            <div class="form-group">
+              <label for="" class="text-white form-label">Email</label>
+              <input type="password" class="form-control" placeholder="juanito21@correo.com" value="" />
+            </div>
+            <br>
             <div class="form-group">
               <input type="submit" class="btnSubmit" value="Registrar" />
             </div>
-            <div class="form-group">
-              <a href="#" class="ForgetPwd" value="Login">Registrar</a>
-            </div>
+
           </form>
         </div>
 
