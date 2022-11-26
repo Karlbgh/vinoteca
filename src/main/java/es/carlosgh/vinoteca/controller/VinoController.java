@@ -104,7 +104,6 @@ public class VinoController {
                 cookie.setHttpOnly(true);
                 response.addCookie(cookie);
             }
-
         }catch (NumberFormatException  e){
             vinosFiltrados = servicio.findAll();
             model.addAttribute("listaVinos", vinosFiltrados );

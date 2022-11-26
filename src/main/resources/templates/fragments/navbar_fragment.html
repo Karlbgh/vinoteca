@@ -38,6 +38,16 @@
                 <span th:text="${#authentication.name}">Menú</span> <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
+                <li>
+                  <span class="dropdown-item" th:text="${numLogin} + ': ' + ${session.numVisitas}"></span>
+                </li>
+                <li>
+                  <span class="dropdown-item" th:text="${textNumIndex} + ': ' + ${session.numVisitasIndex}"></span>
+                </li>
+
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
                 <li class="nav-item"><a class="nav-link text-black" th:href="@{''(lang=es_ES)}">Español</a></li>
                 <li class="nav-item"><a class="nav-link text-black" th:href="@{''(lang=en_US)}">English</a></li>
                 <li>
