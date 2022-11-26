@@ -4,8 +4,12 @@ import es.carlosgh.vinoteca.entity.Vino;
 import es.carlosgh.vinoteca.service.VinoService;
 import es.carlosgh.vinoteca.storage.StorageService;
 import lombok.Data;
+
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +17,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Comparator;
 import java.util.List;
@@ -76,13 +83,28 @@ public class VinoController {
         return ResponseEntity.ok().body(file);
     }
     @GetMapping("/lista/filtro")
-    public String filtrarPorPrecio(@RequestParam("filtro") String filtro, Model model ){
+    public String filtrarPorPrecio(@RequestParam("filtro") String filtro, Model model, HttpServletResponse response, HttpServletRequest request){
         Double precio;
         List<Vino> vinosFiltrados;
         try {
             precio = Double.parseDouble(filtro);
             vinosFiltrados = servicio.findAll().stream().filter(x -> x.getPrecio().equals(precio)).collect(Collectors.toList());
             model.addAttribute("listaVinos", vinosFiltrados);
+
+            String usuario = "";
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (!(authentication instanceof AnonymousAuthenticationToken)){
+                usuario = authentication.getName();
+
+                Cookie cookie = new Cookie(usuario+"_busc_"+precio, precio.toString());
+                cookie.setPath("/");
+                cookie.setDomain("localhost");
+                cookie.setMaxAge(30 * 24 * 60 * 60); // 30 días
+                cookie.setSecure(true);
+                cookie.setHttpOnly(true);
+                response.addCookie(cookie);
+            }
+
         }catch (NumberFormatException  e){
             vinosFiltrados = servicio.findAll();
             model.addAttribute("listaVinos", vinosFiltrados );
