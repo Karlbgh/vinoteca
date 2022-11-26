@@ -2,6 +2,7 @@ package es.carlosgh.vinoteca.seguridad;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.userdetails.User;
@@ -21,11 +22,17 @@ public class SeguridadConfig {
   public InMemoryUserDetailsManager userDetailsService() {
     List<UserDetails> users = new ArrayList<>();
     users.add(User.builder()
-            .username("admin").password(passwordEncoder().encode("admin")).roles("ADMIN")
-            .build());
+            .username("admin")
+            .password(passwordEncoder().encode("admin"))
+            .roles("ADMIN")
+            .build()
+    );
     users.add(User.builder()
-            .username("user").password(passwordEncoder().encode("user")).roles("USER")
-            .build());
+            .username("user")
+            .password(passwordEncoder().encode("user"))
+            .roles("USER")
+            .build()
+    );
 
     return new InMemoryUserDetailsManager(users);
   }
@@ -37,9 +44,18 @@ public class SeguridadConfig {
 
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-      http.authorizeHttpRequests((authz) -> authz.anyRequest().authenticated())
-          .formLogin().loginPage("/login").permitAll().and()
-          .logout().logoutSuccessUrl("/login?logout").permitAll();
+      http
+          .authorizeHttpRequests(
+              (authz) -> authz.anyRequest().authenticated()
+          )
+              .formLogin()
+              .loginPage("/login")
+              .permitAll()
+          .and()
+              .logout()
+              .logoutSuccessUrl("/login?logout")
+              .permitAll();
+
     return http.build();
   }
 

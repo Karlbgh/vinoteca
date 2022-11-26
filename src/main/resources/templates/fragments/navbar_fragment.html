@@ -2,9 +2,9 @@
 <html  lang="es"
        xmlns:th="http://www.thymeleaf.org"
        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
+<head th:replace="/fragments/head_fragment::encabezado(~{::title})">
+  <title>Vinoteca</title>
 </head>
 <body>
 <header class="site-header sticky-top" th:fragment="barra-nav">
@@ -28,12 +28,28 @@
 
         </ul>
 
-        <div class="d-flex">
+        <div class="menuUser d-flex">
           <ul class="navbar-nav me-auto">
-            <li class="nav-item"><a class="nav-link" th:href="@{''(lang=es_ES)}">Español</a></li>
-            <li class="nav-item"><a class="nav-link" th:href="@{''(lang=en_US)}">English</a></li>
-            <li class="nav-item"><a class="nav-link" th:href="@{/usuario/login}">Iniciar sesión</a></li>
+
+            <li sec:authorize="!isAuthenticated()" class="nav-item"><a class="nav-link" th:href="@{/login}">Iniciar sesión</a></li>
+            <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                 href="#"  role="button" >
+                <span th:text="${#authentication.name}">Menú</span> <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="nav-item"><a class="nav-link text-black" th:href="@{''(lang=es_ES)}">Español</a></li>
+                <li class="nav-item"><a class="nav-link text-black" th:href="@{''(lang=en_US)}">English</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">
+                  <i class="fas fa-sign-out-alt"></i> Salir</a>
+                </li>
+              </ul>
+            </li>
           </ul>
+          <form th:action="@{/logout}" method="post" id="logoutForm"></form>
         </div>
 
       </div>

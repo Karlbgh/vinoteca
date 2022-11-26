@@ -93,7 +93,7 @@ main{
 
 /**/
 
-.mainLista, .mainForm{
+.mainLista, .mainForm, .mainLogin{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -129,4 +129,12 @@ main{
 .imagenFormulario img{
     border-radius: 15px;
     width: 100%;
+}
+
+.mainLogin{
+    height: inherit;
+}
+
+.menuUser{
+    margin-right: 100px;
 }
