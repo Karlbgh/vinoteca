@@ -1,7 +1,7 @@
-package es.carlosgh.vinoteca.controller;
+package es.carlosgh.vinoteca.controladores;
 
-import es.carlosgh.vinoteca.entity.Vino;
-import es.carlosgh.vinoteca.service.VinoService;
+import es.carlosgh.vinoteca.entidades.Vino;
+import es.carlosgh.vinoteca.servicios.VinoService;
 import es.carlosgh.vinoteca.storage.StorageService;
 import lombok.Data;
 

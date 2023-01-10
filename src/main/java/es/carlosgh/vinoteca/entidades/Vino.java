@@ -1,23 +1,23 @@
-package es.carlosgh.vinoteca.entity;
+package es.carlosgh.vinoteca.entidades;
 
-import es.carlosgh.vinoteca.service.VinoService;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Builder
+@Entity
 public class Vino {
+    @GeneratedValue
+    @Id
     private Long id;
 
     @NotNull(message="{vino.tipo.vacio}")

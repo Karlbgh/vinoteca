@@ -1,7 +1,7 @@
-package es.carlosgh.vinoteca.service;
+package es.carlosgh.vinoteca.servicios;
 
-import es.carlosgh.vinoteca.entity.TipoVino;
-import es.carlosgh.vinoteca.entity.Vino;
+import es.carlosgh.vinoteca.entidades.TipoVino;
+import es.carlosgh.vinoteca.entidades.Vino;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;

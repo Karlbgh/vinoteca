@@ -1,8 +1,8 @@
-package es.carlosgh.vinoteca.controller;
+package es.carlosgh.vinoteca.controladores;
 
-import es.carlosgh.vinoteca.entity.Vino;
-import es.carlosgh.vinoteca.service.I18nService;
-import es.carlosgh.vinoteca.service.VinoService;
+import es.carlosgh.vinoteca.entidades.Vino;
+import es.carlosgh.vinoteca.servicios.I18nService;
+import es.carlosgh.vinoteca.servicios.VinoService;
 import lombok.Data;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 

@@ -44,14 +44,14 @@ public class SeguridadConfig {
 
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-      http
-          .authorizeHttpRequests(
-              (authz) -> authz.anyRequest().authenticated()
-          )
+      http.authorizeHttpRequests()
+              .antMatchers("/","/webjars/**", "/css/**", "/h2-console/**").permitAll()
+              .anyRequest().authenticated()
+              .and()
               .formLogin()
               .loginPage("/login")
               .permitAll()
-          .and()
+              .and()
               .logout()
               .logoutSuccessUrl("/login?logout")
               .permitAll();
@@ -59,8 +59,8 @@ public class SeguridadConfig {
     return http.build();
   }
 
-  @Bean
-  public WebSecurityCustomizer webSecurityCustomizer() {
-    return (web) -> web.ignoring().antMatchers("/webjars/**", "/css/**");
-  }
+//  @Bean
+//  public WebSecurityCustomizer webSecurityCustomizer() {
+//    return (web) -> web.ignoring().antMatchers("/webjars/**", "/css/**", "/h2-console/**");
+//  }
 }

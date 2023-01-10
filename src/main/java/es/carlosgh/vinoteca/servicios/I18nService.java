@@ -1,4 +1,4 @@
-package es.carlosgh.vinoteca.service;
+package es.carlosgh.vinoteca.servicios;
 
 import lombok.Data;
 import org.springframework.context.MessageSource;

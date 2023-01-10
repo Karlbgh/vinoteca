@@ -1,4 +1,4 @@
-package es.carlosgh.vinoteca.entity;
+package es.carlosgh.vinoteca.entidades;
 
 public enum TipoVino {
     Tinto,

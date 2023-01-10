@@ -29,7 +29,7 @@
                 <label for="tipo" class="text-white form-label" th:text="#{form.tipo}">tipo</label>
                 <select class="form-control" id="tipo" name="tipo" th:field="*{tipo}">
                   <option value=""></option>
-                  <option th:each="tipoVino : ${T(es.carlosgh.vinoteca.entity.TipoVino).values()}"
+                  <option th:each="tipoVino : ${T(es.carlosgh.vinoteca.entidades.TipoVino).values()}"
                           th:value="${tipoVino}"
                           th:text="${tipoVino}"></option>
                 </select>
